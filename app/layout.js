@@ -1,7 +1,8 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Logo from '@/components/logo'
+
 import Image from 'next/image'
+import { Button } from 'react-bootstrap/'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head></head>
       <body>
-        <Image src="/HAGIMA.svg" width={100} height={50} />
+        <Image src="/HAGIMA.svg" alt="Logo of Hagima" width={100} height={50} priority={true} />
 
         {children}
       </body>
