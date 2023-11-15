@@ -92,7 +92,7 @@ function CameraComponent({
 
   useEffect(() => {
     if (hasPermission && !isDriveEnd) {
-      const newIntervalId = setInterval(sendImage, 1000); // set the sending rate
+      const newIntervalId = setInterval(sendImage, 200); // set the sending rate
       setIntervalId(newIntervalId);
 
       return () => {
