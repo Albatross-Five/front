@@ -1,14 +1,24 @@
-import Image from 'next/image'
-
+'use client'
 import Link from 'next/link'
 import Logout from '@/components/logout'
-import LocalStorage from '@/func/localStorage';
+import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+import { Modal } from 'react-bootstrap';
+
+
+
 
 export default function Home() {
-  // localStorage 사용
-  // 로그인 되어있지 않으면 로그인 링크를 보여준다.
-  const isLogin = LocalStorage.getItem('isLogin');
-  if (!isLogin) {
+  const [uuid, setUuid] = useState(null)
+  useEffect(() => {
+    setUuid(Cookies.get('uuid'))
+    console.log(uuid)
+  }, [])
+
+  if (!uuid) {
     return (
       <div>
         <Link href="/login">
@@ -18,10 +28,13 @@ export default function Home() {
     )
   }
 
+  console.log(uuid)
   return (
     <div>
-      하이
+      메인 페이지입니다. <br></br>
+      {uuid}
       <Logout />
+      
     </div>
   )
 }
