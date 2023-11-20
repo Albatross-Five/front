@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'NanumSquare';
+  font-weight: 200;
+  src: url('/fonts/NanumSquareB.ttf') format('truetype');
+}
+
+/* body {
+  font-family: 'NanumSquare';
+  background-color: #12355b;
+  color: #fdfdfd;
+} */
