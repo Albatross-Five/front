@@ -2,7 +2,8 @@
 import CameraComponent from '@/components/camera';
 import React from 'react';
 import { useEffect, useState, useRef } from 'react';
-
+import ToLogin from '@/components/toLogin';
+import Cookies from 'js-cookie';
 
 
 export default function Drive() {
@@ -15,9 +16,21 @@ export default function Drive() {
   const [isSleep, setIsSleep] = useState(0);
   const [isPhone, setIsPhone] = useState(0);
 
+  const [uuid, setUuid] = useState(null)
+  useEffect(() => {
+    setUuid(Cookies.get('uuid'))
+    console.log(uuid)
+  }, [uuid])
+  if (!uuid) {
+    return (
+      <div>
+        <ToLogin />
+      </div>
+    )
+  }
   return (
     <div>
-      드라이브 <br /> {isSleep ? '자는중' : '안자는중'} {isPhone ? '폰중' : '안폰중'}
+      {isSleep ? '자는중' : '안자는중'} {isPhone ? '폰중' : '안폰중'}
       <CameraComponent
         hasPermission={hasPermission}
         setHasPermission={setHasPermission}

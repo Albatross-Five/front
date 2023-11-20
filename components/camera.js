@@ -112,10 +112,10 @@ function CameraComponent({
     }
   }, [hasPermission, isDriveEnd]);
 
-  // 카메라가 없으면 카메라가 없다는 메세지 출력
-  if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-    return <Alert variant="danger">기기에 카메라가 없습니다.</Alert>;
-  }
+  // // 카메라가 없으면 카메라가 없다는 메세지 출력
+  // if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+  //   return <Alert variant="danger">기기에 카메라가 없습니다.</Alert>;
+  // }
   // 에러 핸들링
   if (hasPermission === null) {
     return <div>권한 상태 비정상</div>;

@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
   async rewrites() {
+    console.log('rewrites')
     return [
       {
-        source: '/:path*',
-        destination: 'https://hgm-main.p-e.kr/:path*'
+        source: "/main/:path*",
+        destination: "https://hgm-main.p-e.kr/:path*"
       },
       {
         source: '/ml/:path*',

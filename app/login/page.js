@@ -2,11 +2,11 @@
 
 import axios from "axios"
 import Cookies from "js-cookie"
-
+import { Button } from "react-bootstrap"
 
 export default function Login() {
 
-  const signup = () => axios.post('/signup', {
+  const signup = () => axios.post('/main/signup', {
   })
     .then((res) => {
       console.log(res.data.data.uuid)
@@ -22,8 +22,8 @@ export default function Login() {
 
 
   return (
-    <button onClick={signup}>
+    <Button onClick={signup}>
       GUEST로 시작하기
-    </button>
+    </Button>
   )
 }
