@@ -4,11 +4,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Card, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 
+
 function CameraComponent({
   hasPermission,
   setHasPermission,
   isDriveEnd,
-
+  isSleep,
+  setIsSleep,
+  isPhone,
+  setIsPhone,
 }) {
   const videoRef = useRef(null);
   const [stream, setStream] = useState(null);
@@ -31,13 +35,10 @@ function CameraComponent({
         const formData = new FormData();
         // 사진 파일 출력
         formData.append('file', blob, 'file.jpg');
-        console.log(formData);
-        // file.jpg 출력
-        console.log(blob);
-
         axios
           .post(
-            `https://hgm-ml.p-e.kr/abnormal/detect`,
+            'https://hgm-ml.p-e.kr/abnormal/detect',
+            //'ml/abnormal/detect',
             formData,
             {
               headers: {
@@ -47,6 +48,16 @@ function CameraComponent({
           )
           .then(res => {
             console.log(res.data);
+            if (res.data.sleep) {
+              setIsSleep(1);
+            } else {
+              //setIsSleep(0);
+            }
+            if (res.data.phone) {
+              setIsPhone(1);
+            } else {
+              //setIsPhone(0);
+            }
 
           })
           .catch(err => {
@@ -92,7 +103,7 @@ function CameraComponent({
 
   useEffect(() => {
     if (hasPermission && !isDriveEnd) {
-      const newIntervalId = setInterval(sendImage, 200); // set the sending rate
+      const newIntervalId = setInterval(sendImage, 300); // set the sending rate
       setIntervalId(newIntervalId);
 
       return () => {
