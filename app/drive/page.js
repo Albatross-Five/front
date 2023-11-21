@@ -2,7 +2,7 @@
 import CameraComponent from '@/components/camera';
 import React from 'react';
 import { useEffect, useState, useRef } from 'react';
-import ToLogin from '@/components/toLogin';
+import ToLogin from '@/components/ToLogin';
 import Cookies from 'js-cookie';
 
 

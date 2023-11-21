@@ -2,7 +2,7 @@
 
 import axios from "axios"
 import Cookies from "js-cookie"
-import { Button } from "react-bootstrap"
+import { Button, Container, Row } from "react-bootstrap"
 
 export default function Login() {
 
@@ -22,8 +22,17 @@ export default function Login() {
 
 
   return (
-    <Button onClick={signup}>
-      GUEST로 시작하기
-    </Button>
+    <Container>
+      <Row>
+        <h2>HAGIMA</h2>
+        <h2>안전한 운전의 시작</h2>
+      </Row>
+      <Row>
+        <Button onClick={signup}>
+          GUEST로 시작하기
+        </Button>
+      </Row>
+    </Container>
+
   )
 }

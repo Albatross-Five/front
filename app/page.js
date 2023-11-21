@@ -4,8 +4,8 @@ import Logout from '@/components/logout'
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ToLogin from '@/components/toLogin'
-
+import ToLogin from '@/components/ToLogin'
+import { Button, Container, Row, Col } from 'react-bootstrap'
 
 
 
@@ -28,11 +28,30 @@ export default function Home() {
 
   console.log(uuid)
   return (
-    <div>
-      메인 페이지입니다. <br></br>
-      {uuid}
-      <Logout />
+    <Container>
+      <Row>
+        <h2>오늘도</h2>
+        <h2>안전운전 하세요</h2>
+      </Row>
+      <Row>
 
-    </div>
+        <Col>
+          <Button href="/drive">
+            운전하기
+          </Button>
+        </Col>
+        <Col>
+          <Button href="/mypage">
+            마이페이지
+          </Button>
+        </Col>
+        <Col>
+          <Logout />
+        </Col>
+
+
+      </Row>
+      {uuid}
+    </Container>
   )
 }
