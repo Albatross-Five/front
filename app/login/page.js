@@ -23,12 +23,12 @@ export default function Login() {
 
   return (
     <Container>
-      <Row>
+      <Row style={{ marginBottom: '20vh' }}>
         <h2>HAGIMA</h2>
         <h2>안전한 운전의 시작</h2>
       </Row>
       <Row>
-        <Button onClick={signup}>
+        <Button size='lg' onClick={signup}>
           GUEST로 시작하기
         </Button>
       </Row>
