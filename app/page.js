@@ -14,9 +14,18 @@ import axios from 'axios';
 
 export default function Home() {
   const [uuid, setUuid] = useState(null)
+  const getProfile = () => {
+    axios.get('/main/profile')
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
   const instance = axios.create({
     headers: {
-      'Autorization': `Bearer ${Cookies.get('uuid')}`,
+      'Authorization': `Bearer ${Cookies.get('uuid')}`,
       'Access-Control-Allow-Origin': '*',
     }
   })
@@ -40,8 +49,10 @@ export default function Home() {
         <h2>오늘도</h2>
         <h2>안전운전 하세요</h2>
         <Button onClick={() => instance.get('/main/profile')
-          .then(res => console.log(res.data))
-          .catch(err => console.log(err))
+          .then((res) => {
+            console.log(res.data)
+          }
+          )
         }>api 테스트</Button>
       </Row>
       <div >
