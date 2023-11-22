@@ -20,9 +20,9 @@ export default function Home() {
 
   if (!uuid) {
     return (
-      <div>
-        <ToLogin />
-      </div>
+
+      <ToLogin />
+
     )
   }
 
@@ -33,25 +33,22 @@ export default function Home() {
         <h2>오늘도</h2>
         <h2>안전운전 하세요</h2>
       </Row>
-      <Row>
-
-        <Col>
-          <Button href="/drive">
+      <Row className='justify-content-center'>
+        <Col className='text-center'>
+          <Button size='lg' href="/drive">
             운전하기
           </Button>
         </Col>
-        <Col>
-          <Button href="/mypage">
+        <Col className='text-center'>
+          <Button size='lg' href="/mypage">
             마이페이지
           </Button>
         </Col>
-        <Col>
+        <Col className='text-center'>
           <Logout />
         </Col>
-
-
       </Row>
-      {uuid}
+      {/*{uuid}*/}
     </Container>
   )
 }

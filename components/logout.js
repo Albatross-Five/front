@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import styles from './Logout.module.css';
+
 import { Button } from 'react-bootstrap';
 export default function Logout() {
   const logout = () => {
@@ -9,7 +9,7 @@ export default function Logout() {
     window.location.href = '/'
   }
   return (
-    <Button className={styles.test} onClick={logout}>로그아웃</Button>
+    <Button variant='secondary' size='lg' onClick={logout}>로그아웃</Button>
   );
 }
 

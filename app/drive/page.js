@@ -4,7 +4,8 @@ import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import ToLogin from '@/components/ToLogin';
 import Cookies from 'js-cookie';
-
+import { Container, Row, Col, Alert } from 'react-bootstrap';
+import style from '@/styles/Drive.module.css'
 
 export default function Drive() {
   // camera가 존재하고 권한이 있는지 확인하는 변수
@@ -29,17 +30,29 @@ export default function Drive() {
     )
   }
   return (
-    <div>
-      {isSleep ? '자는중' : '안자는중'} {isPhone ? '폰중' : '안폰중'}
-      <CameraComponent
-        hasPermission={hasPermission}
-        setHasPermission={setHasPermission}
-        isDriveEnd={isDriveEnd}
-        isSleep={isSleep}
-        setIsSleep={setIsSleep}
-        isPhone={isPhone}
-        setIsPhone={setIsPhone}
-      />
-    </div>
+    <Container>
+      <Row>
+        <Col className='text-center'>
+          {isSleep ? <Alert variant='danger'>졸음운전이 감지되었습니다</Alert> : <Alert>졸음운전이 감지되지 않았습니다</Alert>}
+
+        </Col>
+        <Col className='text-center'>
+          {isPhone ? <Alert variant='danger'>휴대폰 사용이 감지되었습니다</Alert> : <Alert>핸드폰 사용이 감지되지 않았습니다</Alert>}
+        </Col>
+
+      </Row>
+
+      <div className={style.item_camera}>
+        <CameraComponent
+          hasPermission={hasPermission}
+          setHasPermission={setHasPermission}
+          isDriveEnd={isDriveEnd}
+          isSleep={isSleep}
+          setIsSleep={setIsSleep}
+          isPhone={isPhone}
+          setIsPhone={setIsPhone}
+        />
+      </div>
+    </Container>
   )
 }

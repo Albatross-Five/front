@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Card, Button, Alert } from 'react-bootstrap';
+import { Card, Button, Spinner } from 'react-bootstrap';
 import axios from 'axios';
-
+import style from '@/styles/CameraComponent.module.css'
 
 function CameraComponent({
   hasPermission,
@@ -118,7 +118,7 @@ function CameraComponent({
   // }
   // 에러 핸들링
   if (hasPermission === null) {
-    return <div>권한 상태 비정상</div>;
+    return <div><Spinner></Spinner></div>;
   }
   // 권한이 없을 경우, 권한 요청 버튼
   if (hasPermission === false) {
@@ -150,7 +150,7 @@ function CameraComponent({
   }
   // 권한이 있으면 카메라 화면을 보여줌
   return (
-    <video playsInline autoPlay ref={videoRef} />
+    <video playsInline autoPlay ref={videoRef} className={style.camera} />
   );
 }
 
