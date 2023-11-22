@@ -9,7 +9,7 @@ export default function Logout() {
     window.location.href = '/'
   }
   return (
-    <Button variant='secondary' size='lg' onClick={logout}>로그아웃</Button>
+    <Button variant='secondary' size='lg' onClick={logout} style={{ fontSize: '25px', height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>로그아웃</Button>
   );
 }
 
