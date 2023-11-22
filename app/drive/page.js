@@ -4,7 +4,7 @@ import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import ToLogin from '@/components/ToLogin';
 import Cookies from 'js-cookie';
-import { Container, Row, Col, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Alert, Button } from 'react-bootstrap';
 import style from '@/styles/Drive.module.css'
 
 export default function Drive() {
@@ -33,11 +33,11 @@ export default function Drive() {
     <Container>
       <Row>
         <Col className='text-center'>
-          {isSleep ? <Alert variant='danger'>졸음운전이 감지되었습니다</Alert> : <Alert>졸음운전이 감지되지 않았습니다</Alert>}
+          {isSleep ? <Alert variant='danger' className={style.item_alert}>졸음운전이 감지되었습니다</Alert> : <Alert className={style.item_alert}>졸음운전이 감지되지 않았습니다</Alert>}
 
         </Col>
         <Col className='text-center'>
-          {isPhone ? <Alert variant='danger'>휴대폰 사용이 감지되었습니다</Alert> : <Alert>핸드폰 사용이 감지되지 않았습니다</Alert>}
+          {isPhone ? <Alert variant='danger' className={style.item_alert}>휴대폰 사용이 감지되었습니다</Alert> : <Alert className={style.item_alert}>핸드폰 사용이 감지되지 않았습니다</Alert>}
         </Col>
 
       </Row>
@@ -53,6 +53,9 @@ export default function Drive() {
           setIsPhone={setIsPhone}
         />
       </div>
+      <Row>
+        <Button variant='danger'>운전 종료</Button>
+      </Row>
     </Container>
   )
 }

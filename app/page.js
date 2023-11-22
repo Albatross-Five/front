@@ -7,12 +7,19 @@ import Cookies from 'js-cookie';
 import ToLogin from '@/components/ToLogin'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import logout from '@/func/logout';
+import axios from 'axios';
 
 
 
 
 export default function Home() {
   const [uuid, setUuid] = useState(null)
+  const instance = axios.create({
+    headers: {
+      'Autorization': `Bearer ${Cookies.get('uuid')}`,
+      'Access-Control-Allow-Origin': '*',
+    }
+  })
   useEffect(() => {
     setUuid(Cookies.get('uuid'))
     console.log(uuid)
@@ -32,7 +39,10 @@ export default function Home() {
       <Row style={{ marginBottom: '20vh' }}>
         <h2>오늘도</h2>
         <h2>안전운전 하세요</h2>
-
+        <Button onClick={() => instance.get('/main/profile')
+          .then(res => console.log(res.data))
+          .catch(err => console.log(err))
+        }>api 테스트</Button>
       </Row>
       <div >
         <Row className='justify-content-center'>
