@@ -27,7 +27,7 @@ export default function Drive() {
   // 운전 종료
   const sendDriveEnd = () => {
     const formData = new FormData();
-    formData.append('file', null)
+
     formData.append('flag', 0);
     axios.post('https://hgm-ml.p-e.kr/abnormal/detect',
       formData,
@@ -40,7 +40,7 @@ export default function Drive() {
       .then(res => console.log(res.data))
       .catch(err => console.log(err))
     setIsDriveEnd(true);
-    //window.location.href = '/';
+    window.location.href = '/';
   }
 
 
@@ -60,7 +60,7 @@ export default function Drive() {
 
         </Col>
         <Col className='text-center'>
-          {isPhone ? <Alert variant='danger' className={style.item_alert}>휴대폰 사용이 감지되었습니다</Alert> : <Alert className={style.item_alert}>핸드폰 사용이 감지되지 않았습니다</Alert>}
+          {isPhone ? <Alert variant='danger' className={style.item_alert}>휴대폰 사용이 감지되었습니다</Alert> : <Alert className={style.item_alert}>휴대폰 사용이 감지되지 않았습니다</Alert>}
         </Col>
 
       </Row>
