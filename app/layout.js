@@ -17,9 +17,10 @@ export default function RootLayout({ children }) {
       <head></head>
       <body>
         <Navbar>
-          <div style={{ paddingLeft: '5vw', paddingTop: '5vh' }}>
+          <div style={{ paddingLeft: '2vw' }}>
             <Image src="/HAGIMA.svg" alt="Logo of Hagima" width={100} height={50} priority={true} />
           </div>
+
         </Navbar>
         {children}
       </body>
