@@ -1,6 +1,6 @@
 'use client'
 
-import Logout from '@/components/logout'
+
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -36,9 +36,7 @@ export default function Home() {
 
   if (!uuid) {
     return (
-
       <ToLogin />
-
     )
   }
 

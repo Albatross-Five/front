@@ -6,6 +6,7 @@ import ToLogin from '@/components/ToLogin';
 import Cookies from 'js-cookie';
 import { Container, Row, Col, Alert, Button } from 'react-bootstrap';
 import style from '@/styles/Drive.module.css'
+import axios from 'axios';
 
 export default function Drive() {
   // camera가 존재하고 권한이 있는지 확인하는 변수
@@ -22,6 +23,28 @@ export default function Drive() {
     setUuid(Cookies.get('uuid'))
     console.log(uuid)
   }, [uuid])
+
+  // 운전 종료
+  const sendDriveEnd = () => {
+    const formData = new FormData();
+    formData.append('file', null)
+    formData.append('flag', 0);
+    axios.post('https://hgm-ml.p-e.kr/abnormal/detect',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    )
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
+    setIsDriveEnd(true);
+    //window.location.href = '/';
+  }
+
+
+  // 컴포넌트 렌더링
   if (!uuid) {
     return (
       <div>
@@ -54,7 +77,7 @@ export default function Drive() {
         />
       </div>
       <Row>
-        <Button variant='danger'>운전 종료</Button>
+        <Button variant='danger' onClick={sendDriveEnd}>운전 종료</Button>
       </Row>
     </Container>
   )

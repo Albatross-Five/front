@@ -35,6 +35,7 @@ function CameraComponent({
         const formData = new FormData();
         // 사진 파일 출력
         formData.append('file', blob, 'file.jpg');
+        formData.append('flag', 1);
         axios
           .post(
             'https://hgm-ml.p-e.kr/abnormal/detect',
