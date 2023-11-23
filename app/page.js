@@ -14,19 +14,10 @@ import axios from 'axios';
 
 export default function Home() {
   const [uuid, setUuid] = useState(null)
-  const getProfile = () => {
-    axios.get('/main/profile')
-      .then((res) => {
-        console.log(res.data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
+
   const instance = axios.create({
     headers: {
       'Authorization': `Bearer ${Cookies.get('uuid')}`,
-      'Access-Control-Allow-Origin': '*',
     }
   })
   useEffect(() => {
@@ -46,12 +37,6 @@ export default function Home() {
       <Row style={{ marginBottom: '20vh' }}>
         <h2>오늘도</h2>
         <h2>안전운전 하세요</h2>
-        <Button onClick={() => instance.get('/main/profile')
-          .then((res) => {
-            console.log(res.data)
-          }
-          )
-        }>api 테스트</Button>
       </Row>
       <div >
         <Row className='justify-content-center'>
