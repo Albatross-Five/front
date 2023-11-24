@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import UserCard from '@/components/userCard';
 import NewUserModal from '@/components/NewUserModal';
 
+
+
 export default function Mypage() {
   // State for Modals
   const [showNewUserModal, setShowNewUserModal] = useState(false);
@@ -22,22 +24,22 @@ export default function Mypage() {
   useEffect(() => {
     instance.get('/main/profile')
       .then(res => {
-        console.log(res.data)
         setUserArray(res.data.data)
-        console.log(typeof (userArray))
       })
       .catch(err => console.log(err))
-  }, [])
+  }, [showNewUserModal])
 
   return (
     <Container>
       <NewUserModal show={showNewUserModal} handleClose={() => setShowNewUserModal(false)} />
       <Row>
 
-        {userArray.map((user, index) => {
+        {userArray.map((user, i) => {
+          const profileUrl = user.profileUrl
+          const nickname = user.nickname
           return (
-            <Col key={index}>
-              <userCard></userCard>
+            <Col key={i}>
+              <UserCard faceImg={profileUrl} nickname={nickname}></UserCard>
             </Col>
           )
         })}
