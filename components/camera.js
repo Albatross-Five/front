@@ -51,13 +51,17 @@ function CameraComponent({
             console.log(res.data);
             if (res.data.sleep) {
               setIsSleep(1);
-            } else {
-              //setIsSleep(0);
+              // 10초 뒤에 초기화
+              setTimeout(() => {
+                setIsSleep(0);
+              }, 10000);
             }
             if (res.data.phone) {
               setIsPhone(1);
-            } else {
-              //setIsPhone(0);
+              // 10초 뒤에 초기화
+              setTimeout(() => {
+                setIsPhone(0);
+              }, 10000);
             }
 
           })
