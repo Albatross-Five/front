@@ -18,11 +18,34 @@ export default function Drive() {
   const [isSleep, setIsSleep] = useState(0);
   const [isPhone, setIsPhone] = useState(0);
 
+  // 유저 정보
   const [uuid, setUuid] = useState(null)
+  const [nickname, setNickname] = useState(null)
+  const instance = axios.create({
+    headers: {
+      'Authorization': `Bearer ${uuid}`,
+    }
+  })
+  // 음성 src
+  const [phoneSrc, setPhoneSrc] = useState(null)
+  const [sleepSrc, setSleepSrc] = useState(null)
   useEffect(() => {
     setUuid(Cookies.get('uuid'))
-    console.log(uuid)
-  }, [uuid])
+    setNickname(Cookies.get('nickname'))
+    console.log(uuid, nickname)
+
+  }, [uuid, nickname])
+
+  useEffect(() => {
+    if (nickname) {
+      instance.get(`/main/profile/voice/${nickname}`)
+        .then(res => {
+          setPhoneSrc(res.data.data[0].url)
+          setSleepSrc(res.data.data[1].url)
+        })
+        .catch(err => console.log(err))
+    }
+  }, [nickname, instance])
 
   // 운전 종료
   const sendDriveEnd = () => {
@@ -79,6 +102,8 @@ export default function Drive() {
       <Row>
         <Button variant='danger' onClick={sendDriveEnd}>운전 종료</Button>
       </Row>
+      {isSleep ? <audio src={sleepSrc} autoPlay></audio> : null}
+      {isPhone ? <audio src={phoneSrc} autoPlay></audio> : null}
     </Container>
   )
 }
