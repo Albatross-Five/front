@@ -1,6 +1,7 @@
 import axios from "axios"
 import Cookies from "js-cookie"
 //a010a07f-d3cd-47c7-a204-98255c3a9c3c
+//22d38eec-fd04-45dc-8bdd-ecb813dba014
 
 export default function addNewUser(nickname, pin, image) {
   const uuid = Cookies.get('uuid')
