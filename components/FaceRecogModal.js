@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import RecogCamera from './RecogCamera';
 import style from '@/styles/CameraComponent.module.css'
 
-export default function FaceRecogModal({ show, handleClose }) {
+export default function FaceRecogModal({ show, handleClose, userArray }) {
   // camera가 존재하고 권한이 있는지 확인하는 변수
   const [hasPermission, setHasPermission] = useState(null);
   return (
@@ -15,6 +15,7 @@ export default function FaceRecogModal({ show, handleClose }) {
         show={show}
         hasPermission={hasPermission}
         setHasPermission={setHasPermission}
+        userArray={userArray}
       />
     </Modal>
   )

@@ -9,6 +9,7 @@ function RecogCamera({
   show,
   hasPermission,
   setHasPermission,
+  userArray
 }) {
   const videoRef = useRef(null);
   const [stream, setStream] = useState(null);
@@ -51,7 +52,9 @@ function RecogCamera({
           )
           .then(res => {
             setShowSpinner(false);
-            console.log(res.data);
+            console.log(res.data.data.index);
+            Cookies.set('nickname', userArray[res.data.data.index].nickname)
+            window.location.href = '/'
           })
           .catch(err => {
             console.log(err);
@@ -98,7 +101,7 @@ function RecogCamera({
   // }
   // 에러 핸들링
   if (hasPermission === null) {
-    return <div><Spinner></Spinner></div>;
+    return <div style={{ justifyContent: 'center', alignContent: 'center' }}><Spinner></Spinner></div>;
   }
   // 권한이 없을 경우, 권한 요청 버튼
   if (hasPermission === false) {

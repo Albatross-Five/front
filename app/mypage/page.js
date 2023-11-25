@@ -37,7 +37,7 @@ export default function Mypage() {
   return (
     <Container>
       <NewUserModal show={showNewUserModal} handleClose={() => setShowNewUserModal(false)} />
-      <FaceRecogModal show={showFaceRecogModal} handleClose={() => setShowFaceRecogModal(false)} />
+      <FaceRecogModal show={showFaceRecogModal} handleClose={() => setShowFaceRecogModal(false)} userArray={userArray} />
       <Row>
 
         {userArray.map((user, i) => {
@@ -56,10 +56,9 @@ export default function Mypage() {
             </Button>
           </Col>}
       </Row>
-      <Button onClick={() => instance.get('/main/profile')
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err))}>프로필 받아오기 테스트</Button>
-      <Button size='lg' onClick={() => setShowFaceRecogModal(true)}>얼굴 인식하기</Button>
+      <Row style={{ justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
+        {userArray.length > 0 ? <Button size='lg' onClick={() => setShowFaceRecogModal(true)} style={{ margin: '5px', width: '80%' }}>얼굴 인식하기</Button> : null}
+      </Row>
     </Container>
   )
 }
