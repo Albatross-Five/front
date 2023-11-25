@@ -3,7 +3,6 @@
 
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import ToLogin from '@/components/ToLogin'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import logout from '@/func/logout';
@@ -14,7 +13,7 @@ import axios from 'axios';
 
 export default function Home() {
   const [uuid, setUuid] = useState(null)
-
+  const [nickname, setNickname] = useState(null)
   const instance = axios.create({
     headers: {
       'Authorization': `Bearer ${Cookies.get('uuid')}`,
@@ -22,19 +21,25 @@ export default function Home() {
   })
   useEffect(() => {
     setUuid(Cookies.get('uuid'))
+    setNickname(Cookies.get('nickname'))
     console.log(uuid)
   }, [uuid])
 
+  // uuid가 없으면 로그인 페이지로 이동
   if (!uuid) {
     return (
       <ToLogin />
     )
   }
+  // nickname이 없으면 마이페이지로 이동
+  if (!nickname) {
+    window.location.href = '/mypage'
+  }
 
-  console.log(uuid)
   return (
     <Container>
       <Row style={{ marginBottom: '20vh' }}>
+        <h1>{nickname} 님</h1>
         <h2>오늘도</h2>
         <h2>안전운전 하세요</h2>
       </Row>
