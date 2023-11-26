@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Form, Spinner } from 'react-bootstrap';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
-import UserCard from '@/components/userCard';
+import UserCard from '@/components/UserCard';
 import NewUserModal from '@/components/NewUserModal';
 import FaceRecogModal from '@/components/FaceRecogModal';
 

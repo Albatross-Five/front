@@ -50,14 +50,18 @@ function CameraComponent({
           .then(res => {
             console.log(res.data);
             if (res.data.sleep) {
-              setIsSleep(1);
+              if (isSleep === 0) {
+                setIsSleep(1);
+              }
               // 10초 뒤에 초기화
               setTimeout(() => {
                 setIsSleep(0);
               }, 10000);
             }
             if (res.data.phone) {
-              setIsPhone(1);
+              if (isPhone === 0) {
+                setIsPhone(1);
+              }
               // 10초 뒤에 초기화
               setTimeout(() => {
                 setIsPhone(0);
