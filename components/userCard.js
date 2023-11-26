@@ -8,7 +8,7 @@ export default function UserCard({ faceImg, nickname, uuid, index }) {
   const [showPinModal, setShowPinModal] = useState(false)
   const [showNewVoiceModal, setShowNewVoiceModal] = useState(false)
   return (
-    <Card style={{ width: '16vw' }}>
+    <Card style={{ width: '16vw', height: '55vh' }}>
       <NewVoiceModal show={showNewVoiceModal} handleClose={() => setShowNewVoiceModal(false)} />
       <PinModal show={showPinModal} handleClose={() => setShowPinModal(false)} index={index} nickname={nickname} />
       <Card.Img variant="top" src={faceImg} style={{ width: '100%', height: '30vh' }} />

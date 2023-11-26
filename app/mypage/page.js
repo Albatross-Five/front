@@ -49,12 +49,21 @@ export default function Mypage() {
             </Col>
           )
         })}
-        {(userArray.length < 4) &&
+        {/* {(userArray.length < 4) &&
           <Col>
             <Button onClick={() => setShowNewUserModal(true)} variant='secondary' style={{ fontSize: '25px', height: '80px', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               새 프로필 추가하기
             </Button>
-          </Col>}
+          </Col>} */}
+        {[...Array(4 - userArray.length)].map((e, i) => {
+          return (
+            <Col key={i} style={{ minHeight: '55vh' }}>
+              <Button onClick={() => setShowNewUserModal(true)} variant='secondary' style={{ fontSize: '30vh', height: '80px', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: '50%' }}>
+                +
+              </Button>
+            </Col>
+          )
+        })}
       </Row>
       <Row style={{ justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
         {userArray.length > 0 ? <Button size='lg' onClick={() => setShowFaceRecogModal(true)} style={{ margin: '5px', width: '80%' }}>얼굴 인식하기</Button> : null}
