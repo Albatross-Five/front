@@ -38,7 +38,7 @@ function RecogCamera({
       blob => {
         const formData = new FormData();
         // 사진 파일 출력
-        formData.append('file', blob, 'file.jpg');
+        formData.append('current', blob, 'file.jpg');
         setShowSpinner(true);
         instance
           .post(

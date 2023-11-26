@@ -52,7 +52,7 @@ export default function Mypage() {
         {(userArray.length < 4) &&
           <Col>
             <Button onClick={() => setShowNewUserModal(true)} variant='secondary' style={{ fontSize: '25px', height: '80px', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              +
+              새 프로필 추가하기
             </Button>
           </Col>}
       </Row>
